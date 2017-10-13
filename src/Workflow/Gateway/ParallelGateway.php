@@ -1,7 +1,10 @@
 <?php
-/*
- * Copyright (c) KUBO Atsuhiro <kubo@iteman.jp> and contributors,
- * All rights reserved.
+/**
+ * Parallel Gateway
+ * 并行网关
+ *
+ * Fork and modified from https://github.com/phpmentors-jp/workflower  By KUBO Atsuhiro <kubo@iteman.jp>
+ *
  *
  * This file is part of Workflower.
  *

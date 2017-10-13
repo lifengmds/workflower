@@ -1,7 +1,10 @@
 <?php
 /*
- * Copyright (c) KUBO Atsuhiro <kubo@iteman.jp> and contributors,
- * All rights reserved.
+ * Exclusive Gateway
+ * 排它网关
+ *
+ * @author      Michael Lee <lifengmds@gmail.com>
+ * Fork and modified from https://github.com/phpmentors-jp/workflower  By KUBO Atsuhiro <kubo@iteman.jp>
  *
  * This file is part of Workflower.
  *

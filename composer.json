@@ -15,7 +15,10 @@
         "ext-dom": "*",
         "phpmentors/domain-kata": "~1.4",
         "piece/stagehand-fsm": "~2.5",
-        "symfony/expression-language": "~2.8 || ~3.0"
+        "symfony/expression-language": "~2.8 || ~3.0",
+        "illuminate/database":"~5.5",
+        "yohang/finite": "^1.1",
+        "php-di/php-di": "^5.4"
     },
     "require-dev": {
         "phake/phake": "~2.0",
@@ -28,12 +31,18 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Workflower\\": "tests/"
+            "Workflower\\": "src/"
         }
     },
     "extra": {
         "branch-alias": {
             "dev-master": "2.0.x-dev"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
         }
     }
 }
