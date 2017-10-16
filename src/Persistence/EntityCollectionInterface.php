@@ -7,9 +7,6 @@
  */
 namespace Workflower\Persistence;
 
-use phpDocumentor\Reflection\Types\Boolean;
-use phpDocumentor\Reflection\Types\Integer;
-
 /**
  * Interface for workflow definition
  *

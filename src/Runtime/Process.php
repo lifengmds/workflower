@@ -5,16 +5,15 @@
  * @author: lifeng lifengmds@gmail.com
  *
  */
-namespace Workflower\Definition;
+namespace Workflower\Runtime;
 
 use Illuminate\Database\QueryException;
-use Workflower\Persistence\WorkflowerInterface;
 use Workflower\Persistence\Model as Model;
-use Workflower\Definition\Process;
+use Workflower\Definition\Workflow;
 
-class Workflow extends Model
+class Process extends Model
 {
-    protected $table = 'workflow_def';
+    protected $table = 'workflow_def_process';
 
     /**
      * Workflow constructor.
@@ -25,26 +24,13 @@ class Workflow extends Model
     }
 
     /**
-     * One workflow has multiple process steps
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Belongs to one workflow
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function process()
+    public function workflow()
     {
-        return $this->hasMany(Process, 'workflow_id');
-    }
-
-    /**
-     * Init when create a workflow
-     *
-     * @param Integer $id workflow id
-     *
-     * @return void
-     */
-    public function init($id): void
-    {
-        //Create a START process as the first step of a workflow
-        Process::new(['workflow_id' => $id, 'type' => 'start', 'is_auto' => 1, 'process_index' => 1]);
+        return $this->belongsTo(Workflow, 'workflow_id');
     }
 
     /**

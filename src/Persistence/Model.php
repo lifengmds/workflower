@@ -104,6 +104,7 @@ class Model extends BaseModel implements EntityCollectionInterface
             return $ex->getMessage();
         }
     }
+    
     /**
      * Create a workflow
      *

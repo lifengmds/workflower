@@ -5,13 +5,19 @@
  * @author: lifeng lifengmds@gmail.com
  *
  */
-namespace Workflower\Definition;
+namespace Workflower\Runtime;
 
 use Illuminate\Database\QueryException;
 use Workflower\Persistence\WorkflowerInterface;
 use Workflower\Persistence\Model as Model;
 use Workflower\Definition\Process;
 
+/**
+ * Class Workflow
+ *
+ * @package Workflower\Definition
+ *
+ */
 class Workflow extends Model
 {
     protected $table = 'workflow_def';
@@ -24,6 +30,14 @@ class Workflow extends Model
         parent::__construct();
     }
 
+    /**
+     *
+     *
+     */
+    public function new($workflow_id)
+    {
+
+    }
     /**
      * One workflow has multiple process steps
      *
