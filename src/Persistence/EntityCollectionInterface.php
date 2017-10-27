@@ -34,16 +34,7 @@ interface EntityCollectionInterface extends EntityInterface, \Countable, \Iterat
      * @return Boolean
      */
     public function remove($key);
-
-
-    /**
-     * Update an Entity by instance
-     *
-     * @param Array $args args to modify
-     *
-     * @return mixed
-     */
-    public function update($args);
+    
 
     /**
      * Query workflow definition

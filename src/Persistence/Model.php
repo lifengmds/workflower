@@ -27,16 +27,18 @@ class Model extends BaseModel implements EntityCollectionInterface
     public $instance = null;
     public $model = null;
 
+
     public function __construct()
     {
-        parent::__construct();
+
         $this->_config = include('config.php');
         $this->_capsule = new Capsule();
-        $this->_capsule->addConnection($this->config['databases']['mysql']);
+        $this->_capsule->addConnection($this->_config['databases']['mysql']);
         $this->_capsule->setAsGlobal();
         $this->_capsule->bootEloquent();
         $this->model = get_called_class();
         $this->_db = $this->_capsule->table($this->table_name);
+        parent::__construct();
     }
 
     /**
@@ -104,7 +106,7 @@ class Model extends BaseModel implements EntityCollectionInterface
             return $ex->getMessage();
         }
     }
-    
+
     /**
      * Create a workflow
      *
@@ -112,10 +114,10 @@ class Model extends BaseModel implements EntityCollectionInterface
      *
      * @return Model
      */
-    public function new($args)
+    public static function new($args)
     {
         try{
-            return call_user_func($this->model."::create", $args);
+            return call_user_func(get_called_class()."::create", $args);
         }catch (QueryException $ex){
             return $ex->getMessage();
         }catch (PDOException $ex) {

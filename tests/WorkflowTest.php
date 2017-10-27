@@ -32,7 +32,16 @@ class WorkflowTest extends TestCase
      */
     public function start()
     {
-        print_r($this->workflow->create('workflow name','tables','testtable','测试表','memo',1));
+        $data = ['workflow_name' => 'workname', 'form_key' => 'tabfdfles', 'form_name' => 'testtasfble', 'memo' => '测s试表2'];
+        /*$flow = New Workflow();
+        $flow->workflow_name = 'workflow name test';
+        $flow->form_key = 'formkey testing';
+        $flow->form_name = 'form name';
+        $flow->save();*/
+        //$flow->fill($data);
+        Workflow::create($data);
+        //Workflow::new($data);
+        //print_r($this->workflow->create('workflow name','tables','testtable','测试表','memo',1));
     }
 
 }

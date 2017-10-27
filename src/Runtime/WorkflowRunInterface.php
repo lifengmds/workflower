@@ -16,7 +16,7 @@ use Workflower\Persistence\EntityCollectionInterface;
  * @version 1.0
  */
 
-interface WorkflowInterface extends EntityCollectionInterface
+interface WorkflowRunInterface extends EntityCollectionInterface
 {
 
     /**
@@ -28,7 +28,6 @@ interface WorkflowInterface extends EntityCollectionInterface
      */
     public function belongsTo($key);
 
-
     /**
      * The initiator of the current workflow
      *
@@ -36,16 +35,46 @@ interface WorkflowInterface extends EntityCollectionInterface
      */
     public function initiator();
 
+    /**
+     * Generate a workflow
+     *
+     * @param Integer $workflow_id   id
+     * @param String  $workflow_name name of the workflow
+     * @param Integer $user          creator
+     *
+     * @return mixed
+     */
+    public function generate($workflow_id, $workflow_name, $user);
+
+
+    /**
+     * Generate processes of a workflow
+     *
+     * @param Integer $workflow_id   id
+     * @param String  $workflow_name name of the workflow
+     * @param Integer $user          creator
+     *
+     * @return mixed
+     */
+    public function initProcess($workflow_id);
 
     /**
      * The initiator of the current workflow
      *
      * @return mixed
      */
-    public function current();
+    public function currentProcess();
+
 
     /**
-     * Get pending list of workflows of specified user, or all if user is null
+     * The current people to audit 当前审批人（未操作）
+     *
+     * @return mixed
+     */
+    public function currentTransactor();
+
+    /**
+     * Get pending list of workflow of specified user, or all if user is null
      *
      * @param Integer $user     user id
      * @param Integer $workflow workflow id
@@ -55,7 +84,7 @@ interface WorkflowInterface extends EntityCollectionInterface
     public function pending($user, $workflow);
 
     /**
-     * Get Finished list of workflows
+     * Get list of Finished workflow
      *
      * @param Integer $user     user id
      * @param Integer $workflow workflow id
@@ -65,7 +94,7 @@ interface WorkflowInterface extends EntityCollectionInterface
     public function finished($user, $workflow);
 
     /**
-     * Get notified workflows
+     * Get List of notified workflow
      *
      * @param Integer $user     user id
      * @param Integer $workflow workflow id

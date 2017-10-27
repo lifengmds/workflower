@@ -11,7 +11,7 @@ use Illuminate\Database\QueryException;
 use Workflower\Persistence\Model as Model;
 use Workflower\Definition\Workflow;
 
-class Process extends Model
+class ProcessRun extends Model
 {
     protected $table = 'workflow_def_process';
 
@@ -31,6 +31,21 @@ class Process extends Model
     public function workflow()
     {
         return $this->belongsTo(Workflow, 'workflow_id');
+    }
+
+    /**
+     * Generate a workflow
+     *
+     * @param Integer $workflow_id   id
+     * @param String  $workflow_name name of the workflow
+     * @param Integer $user          creator
+     *
+     * @return mixed
+     */
+    public static function generate($workflow_id, $workflow_name, $user)
+    {
+        $workflow = self::create(['workflow_def_id' => $workflow_id, 'workflow_name' => $workflow_name, 'created_by' => $user]);
+        self::init($workflow->id);
     }
 
     /**

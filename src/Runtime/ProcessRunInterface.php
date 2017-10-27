@@ -15,8 +15,7 @@ use Workflower\Persistence\EntityCollectionInterface;
  * @package Workflow
  * @version 1.0
  */
-
-interface ProcessInterface extends EntityCollectionInterface
+interface ProcessRunInterface extends EntityCollectionInterface
 {
 
     /**
@@ -36,27 +35,34 @@ interface ProcessInterface extends EntityCollectionInterface
     public function next();
 
     /**
+     * Find previous step
+     *
+     * @return mixed
+     */
+    public function previous();
+
+    /**
      * Get notified workflows
      *
      * @param Integer $id process id
      *
      * @return mixed
      */
-    public function approve($id);
+    public function approve();
 
     /**
      * @param $id
      *
      * @return mixed
      */
-    public function returnBack($id);
+    public function returnBack();
 
     /**
      * @param $id
      *
      * @return mixed
      */
-    public function revoke($id);
+    public function revoke();
 
     /**
      * Refuse to the initiator
@@ -65,7 +71,7 @@ interface ProcessInterface extends EntityCollectionInterface
      *
      * @return mixed
      */
-    public function refuse($id);
+    public function refuse();
 
     /**
      * Force close an workflow.
@@ -74,15 +80,20 @@ interface ProcessInterface extends EntityCollectionInterface
      *
      * @return mixed
      */
-    public function close($id);
-
+    public function close();
 
     /**
      * @param $id
      *
      * @return mixed
      */
-    public function sign($id);
+    public function sign();
 
+    /**
+     * Notify a user 支会
+     *
+     * @return mixed
+     */
+    public function notify();
 
 }
